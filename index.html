@@ -40,7 +40,7 @@
             <p>For as long as recent legal system has existed, our legal professionals have kept the tradition of keeping things "traditional".  To speak blunt, outdated text was kept alive in part due to the fear of potential mistakes when bringing in change.
             These professions have evolved to be interpreters of the jenga tower of convoluted text that is our written law.
 
-            [EUNOMIA] is meant to tackle this problem by representing legal text as structured data, allowing our existing legal system to be equipped 
+            [<strong>EUNOMIA</strong>] is meant to tackle this problem by representing legal text as structured data, allowing our existing legal system to be equipped 
         </article>
         <hr>
         <article>
@@ -77,14 +77,14 @@
         <hr>
         <article>
             <h2 id="design">Design</h2>
-            <p>[EUNOMIA] attempts to represent the legal text through a combination of NOMOs comprised of the following elements:</p>
+            <p>[<strong>EUNOMIA</strong>] attempts to represent the legal text through a combination of <strong>Nomos</strong> comprised of the following elements:</p>
             <ol>
                 <li>Actor</li>
                 <li>Actee</li>
                 <li>Action</li>
                 <li>Condition</li>
             </ol>
-            <p>Element 4, the Condition, would consist of NOMOs as deeply nested as required.  The parent [NOMO] must only apply when all conditions set out in the condition NOMO(s) is true.</p>
+            <p>Element 4, the Condition, would consist of <strong>Nomos</strong> as deeply nested as required.  A master <strong>Nomo</strong> that is a collection of multiple <strong>Nomos</strong> is called a <strong>Eunome</strong>. The parent <strong>Nomo</strong> must only apply when all conditions set out in the condition <strong>Nomo(s)</strong> is true.</p>
             <br>
             <p>To expand and represent as a data object:</p>
 <pre><code>{
@@ -101,7 +101,7 @@
         "negation" : *boolean data*,
         "object" : *array of object(s)*
     },
-    "condition" : [NOMO OBJECT(s)]
+    "condition" : [Nomo OBJECT(s)]
 }</code></pre>
             <br>
             <div>
@@ -131,7 +131,7 @@
     "condition" : [
         {
             "actor" : {
-                "value" : //for each {parent NOMO["action"]["object"]},
+                "value" : //for each {parent Nomo["action"]["object"]},
                 "negation" : false
             },
             "actee" : {
