@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="icon" href="https://via.placeholder.com/70x70">
+    <link rel="stylesheet" href="mvp.css">
+
+    <meta charset="utf-8">
+    <meta name="description" content="My description">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My title</title>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <a href="/"><img alt="Logo" src="https://via.placeholder.com/200x70?text=Logo" height="70"></a>
+            <ul>
+                <li><a href="#introduction">Introduction</li>
+                <li><a href="#influence">Influence</a></li>
+                <li><a href="#design">Design</a></li>
+            </ul>
+        </nav>
+        <h1>CODE NAME: EUNOMIA</h1>
+        <p>Modernizing legal text through codification</p>
+        <br>
+    </header>
+    <main>
+        <hr>
+        <section>
+            <blockquote>   
+“In truth, laws are always useful to those with possessions and harmful to those who have nothing; from which it follows that the social state is advantageous to men only when all possess something and none has too much.”
+                <footer><i>- Jean-Jacques Rousseau, <a href="https://www.goodreads.com/work/quotes/702720-du-contrat-social-ou-principes-du-droit-politique">The Social Contract</a></i></footer>
+            </blockquote>
+        </section>
+        <hr>
+        <article>
+            <h2 id="introduction">Introduction</h2>
+            <p>For as long as recent legal system has existed, our legal professionals have kept the tradition of keeping things "traditional".  To speak blunt, outdated text was kept alive in part due to the fear of potential mistakes when bringing in change.
+            These professions have evolved to be interpreters of the jenga tower of convoluted text that is our written law.
+
+            [EUNOMIA] is meant to tackle this problem by representing legal text as structured data, allowing our existing legal system to be equipped 
+        </article>
+        <hr>
+        <article>
+            <h2 id="influence">Influence</h2>
+            <p>The format of the data structure is borrowed from the concept of the Justinian codification of 6th century Roman law, <i><a href="https://www.wikiwand.com/en/Corpus_Juris_Civilis" id="text-hyperlink">Corpus Juris Civilis</a></i>, which represented legal text in</p>
+            <ol>
+                <li>persons</li>
+                <li>things</li>
+                <li>actions</li>
+            </ol>
+            <p>This concept was adapted again in the 19th century to produce the <i><a href="https://www.wikiwand.com/en/Napoleonic_Code"  id="text-hyperlink">Napoleonic Code</a></i> representing legal text in
+            <ol>
+                <li>persons</li>
+                <li>property</li>
+                <li>acquisition of property</li>
+                <li>civil procedure</li>
+            </ol>
+            <p>Whereas these codes were implemented to modernize feudal laws and solve the problem of disconnected legal systems based on geographical limitations, the current system suffers a vastly more complicated issue of being too verbose.</p>
+            <br>
+            <p>It is said in *Déclaration des droits de l'homme et du citoyen de 1789 (Declaration of the Rights of Man and of the Citizen)* Article VI:</p>
+            <aside>
+                The law is the expression of the <a href="https://www.wikiwand.com/en/General_will">general will</a>. All the citizens have the right of contributing personally or through their representatives to its formation. It must be the same for all, either that it protects, or that it punishes. All the citizens, being equal in its eyes, are equally admissible to all public dignities, places, and employments, according to their capacity and without distinction other than that of their virtues and of their talents.
+            </aside>
+            <br>
+            <p>Similarly from the United Nations <a href="https://www.un.org/en/universal-declaration-human-rights/index.html">Universal Declaration of Human Rights Article 21:</a></p>
+            <aside>
+                (1) Everyone has the right to take part in the government of his country, directly or through freely chosen representatives.
+                (2) Everyone has the right of equal access to public service in his country.
+                (3) The will of the people shall be the basis of the authority of government; this will shall be expressed in periodic and genuine elections which shall be by universal and equal suffrage and shall be held by secret vote or by equivalent free voting procedures.
+            </aside>
+            <br>
+            <p>Many modern legal systems necessarily require highly trained legal professionals to interpret the legal text which is directly prohibitive for equal participation by the public/general will in the formation and remediation of law.</p>
+        </article>
+        <hr>
+        <article>
+            <h2 id="design">Design</h2>
+            <p>[EUNOMIA] attempts to represent the legal text through a combination of NOMOs comprised of the following elements:</p>
+            <ol>
+                <li>Actor</li>
+                <li>Actee</li>
+                <li>Action</li>
+                <li>Condition</li>
+            </ol>
+            <p>Element 4, the Condition, would consist of NOMOs as deeply nested as required.  The parent [NOMO] must only apply when all conditions set out in the condition NOMO(s) is true.</p>
+            <br>
+            <p>To expand and represent as a data object:</p>
+<pre><code>{
+    "actor" : {
+        "value" : *actor name*,
+        "negation" : *boolean data*
+    },
+    "actee" : {
+        "value" : *actee name*,
+        "negation" : *boolean data*
+    },
+    "action" : {
+        "value" : "action name",
+        "negation" : *boolean data*,
+        "object" : *array of object(s)*
+    },
+    "condition" : [NOMO OBJECT(s)]
+}</code></pre>
+            <br>
+            <div>
+                <details>
+                    <summary>Example</summary>
+                    <article>
+                    <p>The Canadian <a href="https://www.laws-lois.justice.gc.ca/eng/acts/F-27/page-2.html#h-234054">Food and Drugs Act (R.S.C., 1985, c. F-27) Part I section 3 (1) states:</a></p>
+                    <aside>
+                        No person shall advertise any food, drug, cosmetic or device to the general public as a treatment, preventative or cure for any of the diseases, disorders or abnormal physical states referred to in Schedule A.1.
+                    </aside>
+
+                    <p>Expressing this in EUNOME would take the following look:</p>
+<pre><code>{
+    "actor" : {
+        "value" : "person",
+        "negation" : true
+    },
+    "actee" : {
+        "value" : "general public",
+        "negation" : false
+    },
+    "action" : {
+        "value" : "advertise",
+        "negation" : "true",
+        "object" : ["food", "drug", "cosmetic", "device"]
+    },
+    "condition" : [
+        {
+            "actor" : {
+                "value" : //for each {parent NOMO["action"]["object"]},
+                "negation" : false
+            },
+            "actee" : {
+                "value" : //for each {["disease", "disorder", "abnormal physical state"]
+                "negation" : false
+            },
+            "action" : {
+                "value" : //for each {["treat", "prevent", "cure"]},
+                "negation" : false
+            }
+            "condition" : null
+       }
+    ]
+}</code></pre>
+                </details>
+            </div>
+            <br>
+            <p>
+                It should be noted that the purpose is not necessarily to convert existing legal text into EUNOMEs but rather offer this as a building block for a new digital governance framework [TBD PROJECT LIBERETH].
+            </p>
+        </article>
+    </main>
+    <footer>
+        <hr>
+        <p>
+            Contact info
+        </p>
+    </footer>
+</body>
+
+</html>
